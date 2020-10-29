@@ -1,4 +1,5 @@
 import sys
+from operator import itemgetter
 
 
 def main():
@@ -14,8 +15,9 @@ def main():
     words = tokenize(text)
 
     word_counts = count_words(words)
-    for word in word_counts:
-        print(word + ": " + str(word_counts[word]))
+    sorted_word_counts = sort_by_count(word_counts)
+    for item in sorted_word_counts:
+        print(item[0] + ": " + str(item[1]))
 
 
 def filter_text(text):
@@ -43,6 +45,10 @@ def count_words(words):
         else:
             word_counts[word] += 1
     return word_counts
+
+
+def sort_by_count(word_counts):
+    return sorted(word_counts.items(), key=itemgetter(1), reverse=True)
 
 
 if __name__ == "__main__":
