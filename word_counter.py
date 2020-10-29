@@ -13,6 +13,7 @@ def main():
 
     file = open(input_path, "r", encoding="utf8")
     text = file.read()
+    file.close()
 
     text = filter_text(text)
     text = text.lower()
