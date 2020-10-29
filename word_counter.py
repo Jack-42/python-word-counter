@@ -3,10 +3,14 @@ from operator import itemgetter
 
 
 def main():
-    if len(sys.argv) != 2:
-        print("Usage: python ./word_counter.py <input-path>")
+    if len(sys.argv) < 2:
+        print("Usage: python ./word_counter.py <input-path> [limit]")
         return
     input_path = sys.argv[1]
+    limit = None
+    if len(sys.argv) >= 3:
+        limit = int(sys.argv[2])
+
     file = open(input_path, "r", encoding="utf8")
     text = file.read()
 
@@ -16,7 +20,12 @@ def main():
 
     word_counts = count_words(words)
     sorted_word_counts = sort_by_count(word_counts)
-    for item in sorted_word_counts:
+
+    if limit is None:
+        limit = len(sorted_word_counts)
+
+    for i in range(0, limit):
+        item = sorted_word_counts[i]
         print(item[0] + ": " + str(item[1]))
 
 
