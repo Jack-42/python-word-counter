@@ -31,7 +31,7 @@ def main():
 
 def filter_text(text):
     filtered_text = text
-    invalid_chars = ",;.:-_^!\"§$%&/()=?{[]}\\'+*~"
+    invalid_chars = "0123456789,;.:-_^!\"§$%&/()=?{[]}\\'+*~"
     for char in invalid_chars:
         filtered_text = filtered_text.replace(char, "")
     return filtered_text
