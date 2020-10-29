@@ -13,11 +13,11 @@ Run the app in the command line by the following command:
 python word_counter.py <input-file> [limit]
 ```
 
-The app will print a list of all the words and their count, sorted by count in descending order.
+The app prints a list of the unique words and their count, sorted by count in descending order.
 
 The `input-file` argument is required and specifies the path to a text file.
 
-The `limit` argument is optional and specifies how many words should be printed.
+The `limit` argument is optional and specifies how many words should be printed. If it is ommited, all words are printed.
 
 An example command might look as folllows:
 
