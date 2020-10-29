@@ -7,7 +7,7 @@ Python 3 must be installed.
 
 ### Usage
 
-Run the command line in the directory of this project and execute the app by the following command:
+Run the app in the command line by the following command:
 
 ```
 python word_counter.py <input-file> [limit]
