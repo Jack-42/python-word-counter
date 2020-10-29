@@ -1,2 +1,2 @@
 # python-word-counter
-A simple word counter as a cmd line tool implemented in Python.
+A simple word counter implemented in Python.
