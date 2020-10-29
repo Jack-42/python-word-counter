@@ -13,7 +13,7 @@ Run the app in the command line by the following command:
 python word_counter.py <input-file> [limit]
 ```
 
-The app prints a list of the unique words and their count, sorted by count in descending order.
+The app prints a list of the unique words and their count, sorted from highest to lowest count.
 
 The `input-file` argument is required and specifies the path to a text file.
 
