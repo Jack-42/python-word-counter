@@ -6,8 +6,9 @@ Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculu
 
 
 def main():
-    filtered_text = filter_text(lorem_ipsum)
-    words = tokenize(filtered_text)
+    text = filter_text(lorem_ipsum)
+    text = text.lower()
+    words = tokenize(text)
     word_counts = count_words(words)
     for word in word_counts:
         print(word + ": " + str(word_counts[word]))
