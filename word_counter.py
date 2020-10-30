@@ -1,19 +1,21 @@
 import sys
 from operator import itemgetter
+import csv
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python ./word_counter.py <input-path> [limit]")
+    if len(sys.argv) < 3 or len(sys.argv) > 4:
+        print("Usage: python ./word_counter.py <input_path> <output_path> [limit]")
         return
     input_path = sys.argv[1]
+    output_path = sys.argv[2]
     limit = None
-    if len(sys.argv) >= 3:
-        limit = int(sys.argv[2])
+    if len(sys.argv) > 3:
+        limit = int(sys.argv[3])
 
-    file = open(input_path, "r", encoding="utf8")
-    text = file.read()
-    file.close()
+    input_file = open(input_path, "r", encoding="utf8")
+    text = input_file.read()
+    input_file.close()
 
     text = filter_text(text)
     text = text.lower()
@@ -25,9 +27,17 @@ def main():
     if limit is None:
         limit = len(sorted_word_counts)
 
+    output_file = open(output_path, "w", encoding="utf8", newline="")
+    writer = csv.writer(output_file)
+    header = ["Rank", "Word", "Count"]
+    writer.writerow(header)
     for i in range(0, limit):
-        item = sorted_word_counts[i]
-        print(item[0] + ": " + str(item[1]))
+        rank = i + 1
+        word = sorted_word_counts[i][0]
+        count = sorted_word_counts[i][1]
+        row = [str(rank), word, str(count)]
+        writer.writerow(row)
+    output_file.close()
 
 
 def filter_text(text):
