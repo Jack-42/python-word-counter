@@ -19,23 +19,13 @@ def main():
     text = filter_text(text)
     text = text.lower()
     words = tokenize(text)
-
     word_counts = count_words(words)
     sorted_word_counts = sort_by_count(word_counts)
 
     if limit is None:
         limit = len(sorted_word_counts)
 
-    with open(output_path, "w", encoding="utf8", newline="") as file:
-        writer = csv.writer(file)
-        header = ["Rank", "Word", "Count"]
-        writer.writerow(header)
-        for i in range(0, limit):
-            rank = i + 1
-            word = sorted_word_counts[i][0]
-            count = sorted_word_counts[i][1]
-            row = [str(rank), word, str(count)]
-            writer.writerow(row)
+    write_csv_file(output_path, sorted_word_counts, limit)
 
 
 def filter_text(text):
@@ -67,6 +57,19 @@ def count_words(words):
 
 def sort_by_count(word_counts):
     return sorted(word_counts.items(), key=itemgetter(1), reverse=True)
+
+
+def write_csv_file(path, sorted_word_counts, limit):
+    with open(path, "w", encoding="utf8", newline="") as file:
+        writer = csv.writer(file)
+        header = ["Rank", "Word", "Count"]
+        writer.writerow(header)
+        for i in range(0, limit):
+            rank = i + 1
+            word = sorted_word_counts[i][0]
+            count = sorted_word_counts[i][1]
+            row = [str(rank), word, str(count)]
+            writer.writerow(row)
 
 
 if __name__ == "__main__":
