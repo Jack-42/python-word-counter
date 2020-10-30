@@ -5,7 +5,7 @@ import csv
 
 def main():
     if len(sys.argv) < 3 or len(sys.argv) > 4:
-        print("Usage: python ./word_counter.py <input_path> <output_path> [limit]")
+        print("Usage: python word_counter.py <input_path> <output_path> [limit]")
         return
     input_path = sys.argv[1]
     output_path = sys.argv[2]
