@@ -13,7 +13,7 @@ Run the app in the command line by the following command:
 python word_counter.py <input_path> <output_path> [limit]
 ```
 
-The app counts the unique words in a text file and outputs the results as a csv file, sorted by count from highest to lowest.
+The app counts the occurences of each word in a text file. The results are written to a CSV file, sorted by count from highest to lowest.
 
 The `input_path` argument is required and specifies the path to the input text file.
 
