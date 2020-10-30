@@ -10,17 +10,19 @@ Python 3 must be installed.
 Run the app in the command line by the following command:
 
 ```
-python word_counter.py <input_path> [limit]
+python word_counter.py <input_path> <output_path> [limit]
 ```
 
-The app prints a list of the unique words and their count, sorted from highest to lowest count.
+The app counts the unique words in a text file and outputs the results as a csv file, sorted by count from highest to lowest.
 
-The `input_path` argument is required and specifies the path to a text file.
+The `input_path` argument is required and specifies the path to the input text file.
 
-The `limit` argument is optional and specifies how many words should be printed. If it is ommited, all words are printed.
+The `output_path` argument is required and specifies the path to the output CSV file.
+
+The `limit` argument is optional and specifies how many words should be included in the output. If it is ommited, all words are included.
 
 An example command might look as folllows:
 
 ```
-python word_counter.py samples/trump_tweets.txt 100
+python word_counter.py samples/trump_tweets.txt samples/trump_tweets_results.csv 100
 ```
