@@ -13,9 +13,8 @@ def main():
     if len(sys.argv) > 3:
         limit = int(sys.argv[3])
 
-    input_file = open(input_path, "r", encoding="utf8")
-    text = input_file.read()
-    input_file.close()
+    with open(input_path, "r", encoding="utf8") as file:
+        text = file.read()
 
     text = filter_text(text)
     text = text.lower()
@@ -27,17 +26,16 @@ def main():
     if limit is None:
         limit = len(sorted_word_counts)
 
-    output_file = open(output_path, "w", encoding="utf8", newline="")
-    writer = csv.writer(output_file)
-    header = ["Rank", "Word", "Count"]
-    writer.writerow(header)
-    for i in range(0, limit):
-        rank = i + 1
-        word = sorted_word_counts[i][0]
-        count = sorted_word_counts[i][1]
-        row = [str(rank), word, str(count)]
-        writer.writerow(row)
-    output_file.close()
+    with open(output_path, "w", encoding="utf8", newline="") as file:
+        writer = csv.writer(file)
+        header = ["Rank", "Word", "Count"]
+        writer.writerow(header)
+        for i in range(0, limit):
+            rank = i + 1
+            word = sorted_word_counts[i][0]
+            count = sorted_word_counts[i][1]
+            row = [str(rank), word, str(count)]
+            writer.writerow(row)
 
 
 def filter_text(text):
