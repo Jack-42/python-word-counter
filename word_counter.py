@@ -1,17 +1,19 @@
-import sys
+import argparse
 from operator import itemgetter
 import csv
 
 
 def main():
-    if len(sys.argv) < 3 or len(sys.argv) > 4:
-        print("Usage: python word_counter.py <input_path> <output_path> [limit]")
-        return
-    input_path = sys.argv[1]
-    output_path = sys.argv[2]
-    limit = None
-    if len(sys.argv) > 3:
-        limit = int(sys.argv[3])
+    parser = argparse.ArgumentParser(description="Count words in a text file and output results to CSV file")
+    parser.add_argument("-i", "--input_path", type=str, required=True, help="Path to the input text file")
+    parser.add_argument("-o", "--output_path", type=str, required=True, help="Path to the output CSV file")
+    parser.add_argument("-l", "--limit", type=int, required=False,
+                        help="The number of words to include in the output (all by default)")
+    args = parser.parse_args()
+
+    input_path = args.input_path
+    output_path = args.output_path
+    limit = args.limit
 
     with open(input_path, "r", encoding="utf8") as file:
         text = file.read()
