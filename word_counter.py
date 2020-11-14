@@ -5,10 +5,11 @@ import csv
 
 def main():
     parser = argparse.ArgumentParser(description="Count words in a text file and output results to CSV file")
-    parser.add_argument("-i", "--input_path", type=str, required=True, help="Path to the input text file")
-    parser.add_argument("-o", "--output_path", type=str, required=True, help="Path to the output CSV file")
+    required_args = parser.add_argument_group("required arguments")
+    required_args.add_argument("-i", "--input_path", type=str, required=True, help="Path to the input text file")
+    required_args.add_argument("-o", "--output_path", type=str, required=True, help="Path to the output CSV file")
     parser.add_argument("-l", "--limit", type=int, required=False,
-                        help="The number of words to include in the output (all by default)")
+                        help="The number of words to include in the output (all, if not defined)")
     args = parser.parse_args()
 
     input_path = args.input_path
